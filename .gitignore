@@ -1,0 +1,11 @@
+.DS_Store
+*.dSYM
+*.gcda
+*.gcno
+*.gcov
+*.plist
+graph-tests
+Doxyfile
+Icon?
+TestGraph
+TestGraph.tmp
