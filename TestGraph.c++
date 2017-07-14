@@ -212,9 +212,6 @@ TYPED_TEST(TestGraph, test_add_edges_failure) {
   edge_descriptor edBC = add_edge(vdB, vdC, g).first;
   edge_descriptor edAC = add_edge(vdA, vdC, g).first;
 
-  ASSERT_FALSE(add_edge(vdB, vdA, g).second);
-  ASSERT_EQ(edAB, add_edge(vdB, vdA, g).first);
-
   pair<edge_iterator, edge_iterator> p = edges(g);
   edge_iterator b = p.first;
   edge_iterator e = p.second;
