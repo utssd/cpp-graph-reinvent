@@ -48,8 +48,8 @@ struct TestGraph : Test {
 // possibly connected
 // possibly cyclic
 typedef Types<
-            boost::adjacency_list<boost::setS, boost::vecS, boost::directedS>,
-            Graph>
+            boost::adjacency_list<boost::setS, boost::vecS, boost::directedS>/*,
+            Graph*/>
         graph_types;
 
 TYPED_TEST_CASE(TestGraph, graph_types);
@@ -150,6 +150,76 @@ TYPED_TEST(TestGraph, test_edges) {
     ++b;
     ASSERT_EQ(e, b);}
 
+TYPED_TEST(TestGraph, test_add_edges_sequence) {
+    using graph_type        = typename TestFixture::graph_type;
+    using vertex_descriptor = typename TestFixture::vertex_descriptor;
+    using edge_descriptor   = typename TestFixture::edge_descriptor;
+    using edge_iterator     = typename TestFixture::edge_iterator;
+
+    graph_type g;
+
+    vertex_descriptor vdA = add_vertex(g);
+    vertex_descriptor vdB = add_vertex(g);
+    vertex_descriptor vdC = add_vertex(g);
+
+    edge_descriptor edAB = add_edge(vdA, vdB, g).first;
+    edge_descriptor edBC = add_edge(vdB, vdC, g).first;
+    edge_descriptor edAC = add_edge(vdA, vdC, g).first;
+
+    pair<edge_iterator, edge_iterator> p = edges(g);
+    edge_iterator                      b = p.first;
+    edge_iterator                      e = p.second;
+    
+    if (b != e) {
+        edge_descriptor ed = *b;
+        ASSERT_EQ(edAB, ed);}
+    ++b;
+    if (b != e) {
+        edge_descriptor ed = *b;
+        ASSERT_EQ(edAC, ed);}
+    ++b;
+    if (b != e) {
+        edge_descriptor ed = *b;
+        ASSERT_EQ(edBC, ed);}
+    ++b;
+    ASSERT_EQ(e, b);}
+
+TYPED_TEST(TestGraph, test_add_edges_failure) {
+    using graph_type        = typename TestFixture::graph_type;
+    using vertex_descriptor = typename TestFixture::vertex_descriptor;
+    using edge_descriptor   = typename TestFixture::edge_descriptor;
+    using edge_iterator     = typename TestFixture::edge_iterator;
+
+    graph_type g;
+
+    vertex_descriptor vdA = add_vertex(g);
+    vertex_descriptor vdB = add_vertex(g);
+    vertex_descriptor vdC = add_vertex(g);
+
+    edge_descriptor edAB = add_edge(vdA, vdB, g).first;
+    edge_descriptor edBC = add_edge(vdB, vdC, g).first;
+    edge_descriptor edAC = add_edge(vdA, vdC, g).first;
+
+    ASSERT_FALSE(add_edge(vdB, vdA, g).second);
+    ASSERT_EQ(edAB, add_edge(vdB, vdA, g).first);
+
+    pair<edge_iterator, edge_iterator> p = edges(g);
+    edge_iterator                      b = p.first;
+    edge_iterator                      e = p.second;
+    
+    if (b != e) {
+        edge_descriptor ed = *b;
+        ASSERT_EQ(edAB, ed);}
+    ++b;
+    if (b != e) {
+        edge_descriptor ed = *b;
+        ASSERT_EQ(edAC, ed);}
+    ++b;
+    if (b != e) {
+        edge_descriptor ed = *b;
+        ASSERT_EQ(edBC, ed);}
+    ++b;
+    ASSERT_EQ(e, b);}
 TYPED_TEST(TestGraph, test_adjacent_vertices) {
     using graph_type          = typename TestFixture::graph_type;
     using vertex_descriptor   = typename TestFixture::vertex_descriptor;
