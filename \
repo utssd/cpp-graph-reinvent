@@ -48,7 +48,7 @@ template <typename G> struct TestGraph : Test {
 // possibly connected
 // possibly cyclic
 typedef Types<
-    boost::adjacency_list<boost::setS, boost::vecS, boost::directedS>,
+/*    boost::adjacency_list<boost::setS, boost::vecS, boost::directedS>,*/
             Graph>
     graph_types;
 
@@ -81,15 +81,15 @@ TYPED_TEST(TestGraph, test_edge) {
   vertex_descriptor vdA = add_vertex(g);
   vertex_descriptor vdB = add_vertex(g);
 
-
-
-
   edge_descriptor edAB = add_edge(vdA, vdB, g).first;
+
   pair<edge_descriptor, bool> p1 = add_edge(vdA, vdB, g);
   ASSERT_EQ(edAB, p1.first);
   ASSERT_EQ(false, p1.second);
 
   pair<edge_descriptor, bool> p2 = edge(vdA, vdB, g);
+
+    g.check_size();
 
   ASSERT_EQ(edAB, p2.first);
   ASSERT_EQ(true, p2.second);
@@ -141,24 +141,31 @@ TYPED_TEST(TestGraph, test_edges) {
   vertex_descriptor vdA = add_vertex(g);
   vertex_descriptor vdB = add_vertex(g);
   vertex_descriptor vdC = add_vertex(g);
+    g.check_size();
   edge_descriptor edAB = add_edge(vdA, vdB, g).first;
   edge_descriptor edAC = add_edge(vdA, vdC, g).first;
+    g.check_size();
 
   pair<edge_iterator, edge_iterator> p = edges(g);
   edge_iterator b = p.first;
   edge_iterator e = p.second;
-  
+  cout << "so far so good" << endl;
   if (b != e) {
     edge_descriptor ed = *b;
     ASSERT_EQ(edAB, ed);
   }
+  cout << "so far so good 1" << endl;
   ++b;
   if (b != e) {
+     cout << "entered here" << endl;
     edge_descriptor ed = *b;
+    cout << "and here" << endl;
     ASSERT_EQ(edAC, ed);
   }
+  cout << "so far so good 2" << endl;
   ++b;
   ASSERT_EQ(e, b);
+  cout << "so far so good 3" << endl;
 }
 
 TYPED_TEST(TestGraph, test_add_edges_sequence) {

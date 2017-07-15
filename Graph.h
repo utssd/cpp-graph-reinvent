@@ -17,6 +17,8 @@
 #include <utility>   // make_pair, pair
 #include <vector>    // vector
 
+#include <iostream>
+
 // -----
 // Graph
 // -----
@@ -30,11 +32,47 @@ public:
   typedef std::size_t vertex_descriptor;
   typedef std::pair<vertex_descriptor, vertex_descriptor> edge_descriptor;
 
-  typedef std::vector<std::vector<std::size_t>>::const_iterator vertex_iterator;
   typedef std::vector<std::size_t>::const_iterator adjacency_iterator;
 
   typedef std::size_t vertices_size_type;
   typedef std::size_t edges_size_type;
+
+  class vertex_iterator {
+
+  private:
+    const Graph *g;
+    std::size_t _p;
+
+  public:
+    vertex_iterator(const Graph *tg, std::size_t p) : g(tg), _p(p) {}
+    vertex_descriptor operator*() { return _p; }
+    vertex_iterator &operator++() {
+      ++_p;
+      return *this;
+    }
+    vertex_iterator operator++(int) {
+      vertex_iterator x = *this;
+      ++(*this);
+      return x;
+    }
+    vertex_iterator &operator--() {
+      --_p;
+      return *this;
+    }
+    vertex_iterator operator--(int) {
+      vertex_iterator x = *this;
+      --(*this);
+      return x;
+    }
+    friend bool operator==(const vertex_iterator &lhs,
+                           const vertex_iterator &rhs) {
+      return (lhs.g == rhs.g && lhs._p == rhs._p);
+    }
+    friend bool operator!=(const vertex_iterator &lhs,
+                           const vertex_iterator &rhs) {
+      return !(lhs == rhs);
+    }
+  };
 
   class edge_iterator {
   private:
@@ -48,11 +86,20 @@ public:
         : _sp(s), _tp(t), rg(g) {}
 
     edge_iterator &operator++() {
-      if (_tp + 1 == rg->g[_sp].size()) {
-        ++_sp;
-        _tp = 0;
-      } else {
+      if (_tp + 1 < rg->g[_sp].size()) {
         ++_tp;
+      } else if (_sp + 1 == rg->g.size()) {
+          ++_sp;
+          _tp = 0;
+        } else {
+            size_t p;
+        for(p = _sp + 1; p < rg->g.size(); ++p) {
+            if (rg->g[p].size()) {
+                break;
+            }
+        }
+        _sp = p;
+        _tp = 0;
       }
       return *this;
     }
@@ -85,8 +132,10 @@ public:
   // TODO check Boost result of add_edge failure, see what return.first is
   friend std::pair<edge_descriptor, bool>
   add_edge(vertex_descriptor s, vertex_descriptor e, Graph &t) {
-    if (std::find(t.g[s].begin(), t.g[s].end(), e) != t.g[e].end())
-      return std::make_pair(std::make_pair(s, e), true);
+    if (t.g[s].size() &&
+        (std::find(t.g[s].begin(), t.g[s].end(), e) != t.g[s].end())) {
+      return std::make_pair(std::make_pair(s, e), false);
+    }
     t.g[s].push_back(e);
     return std::make_pair(std::make_pair(s, e), true);
   }
@@ -141,8 +190,14 @@ public:
    * your documentation
    */
   friend std::pair<edge_iterator, edge_iterator> edges(const Graph &tg) {
-    edge_iterator b(&tg, 0, 0);
-    edge_iterator e(&tg, tg.g.size() - 1, tg.g[tg.g.size() - 1].size());
+    size_t p;
+      for(p = 0; p < tg.g.size(); ++p) {
+        if (tg.g[p].size()) {
+            break;
+        }
+    }  
+      edge_iterator b(&tg, p, 0);
+    edge_iterator e(&tg, tg.g.size(), 0);
     return std::make_pair(b, e);
   }
 
@@ -193,8 +248,7 @@ public:
    * your documentation
    */
   friend vertex_descriptor target(edge_descriptor ed, const Graph &tg) {
-    vertex_descriptor v = tg.g[ed.first][ed.second];
-    return v;
+    return ed.second;
   }
 
   // ------
@@ -217,8 +271,8 @@ public:
    * your documentation
    */
   friend std::pair<vertex_iterator, vertex_iterator> vertices(const Graph &tg) {
-    vertex_iterator b = (tg.g).begin();
-    vertex_iterator e = (tg.g).end();
+    vertex_iterator b(&tg, 0);
+    vertex_iterator e(&tg, tg.g.end() - tg.g.begin());
     return std::make_pair(b, e);
   }
 
