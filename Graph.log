@@ -1,0 +1,65 @@
+commit 618888bb42da5d9cc30bed0e663c8717f8b60b87
+Author: utssd <shida.shen@utexas.edu>
+Date:   Sat Jul 15 20:33:23 2017 -0500
+
+    generate documents, format all codes, fix #11, fix #12, will fix #15
+
+commit 9890786685489cebfcc58195802ac539dfe3cfc5
+Author: utssd <shida.shen@utexas.edu>
+Date:   Sat Jul 15 19:41:07 2017 -0500
+
+    Pass all tests, fix #5, fix #8, fix #10, fix #13
+
+commit b5d10e90a7e1d92062e70cad43754c2c2bd1df21
+Author: utssd <shida.shen@utexas.edu>
+Date:   Sat Jul 15 09:09:05 2017 -0500
+
+    rm redundant
+
+commit 69ff9c97693076acfe74b7c2659deb3bf6bb628d
+Author: utssd <shida.shen@utexas.edu>
+Date:   Sat Jul 15 09:02:12 2017 -0500
+
+    finish all given tests, more tests to write, fix #4, fix #6, fix #7
+
+commit dc1f097117cf2aff94765b2976a5c3cc8611b2eb
+Author: utssd <shida.shen@utexas.edu>
+Date:   Thu Jul 13 22:41:00 2017 -0500
+
+    change to double direction graph, alter tests
+
+commit ef9caed8b4c925df24ea743a8cfa630814636c8e
+Author: utssd <shida.shen@utexas.edu>
+Date:   Thu Jul 13 22:35:12 2017 -0500
+
+    head file is now warning free
+
+commit 46a657044eead0ca3a5363d78dfe7a3f749d0f60
+Author: utssd <shida.shen@utexas.edu>
+Date:   Thu Jul 13 22:31:19 2017 -0500
+
+    head file is now bug-free, though not tested yet
+
+commit 817eac9bf5924980d9238fcea46d844cf9a01615
+Author: utssd <shida.shen@utexas.edu>
+Date:   Thu Jul 13 22:00:11 2017 -0500
+
+    finish outline of head file, not tested yet
+
+commit e716f412a531ccd26b44517c1f766dfca14a8415
+Author: utssd <shida.shen@utexas.edu>
+Date:   Tue Jul 11 23:04:12 2017 -0500
+
+    add .gitignore, travis.yml, makefile and head files, fix #1 , fixes #2
+
+commit d3967003e61f3582a0f0cb885ef192cd08f62385
+Author: utssd <utssd@users.noreply.github.com>
+Date:   Tue Jul 11 22:50:25 2017 -0500
+
+    Update README.md
+
+commit 7552fd0ba9665c8e631b4fe6a00b232125ceda42
+Author: utssd <utssd@users.noreply.github.com>
+Date:   Tue Jul 11 22:50:03 2017 -0500
+
+    README.md
