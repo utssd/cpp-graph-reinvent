@@ -1,54 +1,162 @@
-==6162== Memcheck, a memory error detector
-==6162== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==6162== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==6162== Command: ./TestGraph
-==6162==
---6162-- run: /usr/bin/dsymutil "./TestGraph"
-warning: no debug symbols in executable (-arch x86_64)
+==4166== Memcheck, a memory error detector
+==4166== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==4166== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==4166== Command: ./TestGraph
+==4166== 
 Running main() from gtest_main.cc
-[==========] Running 10 tests from 2 test cases.
+[==========] Running 62 tests from 2 test cases.
 [----------] Global test environment set-up.
-[----------] 5 tests from TestGraph/0, where TypeParam = boost::adjacency_list<boost::setS, boost::vecS, boost::directedS, boost::no_property, boost::no_property, boost::no_property, boost::listS>
-[ RUN      ] TestGraph/0.test_vertex
-[       OK ] TestGraph/0.test_vertex (52 ms)
-[ RUN      ] TestGraph/0.test_edge
-[       OK ] TestGraph/0.test_edge (68 ms)
-[ RUN      ] TestGraph/0.test_vertices
-[       OK ] TestGraph/0.test_vertices (7 ms)
-[ RUN      ] TestGraph/0.test_edges
-[       OK ] TestGraph/0.test_edges (35 ms)
-[ RUN      ] TestGraph/0.test_adjacent_vertices
-[       OK ] TestGraph/0.test_adjacent_vertices (17 ms)
-[----------] 5 tests from TestGraph/0 (191 ms total)
+[----------] 31 tests from TestGraph/0, where TypeParam = boost::adjacency_list<boost::setS, boost::vecS, boost::directedS, boost::no_property, boost::no_property, boost::no_property, boost::listS>
+[ RUN      ] TestGraph/0.test_vertex_1
+[       OK ] TestGraph/0.test_vertex_1 (33 ms)
+[ RUN      ] TestGraph/0.test_vertex_2
+[       OK ] TestGraph/0.test_vertex_2 (6 ms)
+[ RUN      ] TestGraph/0.test_num_vertices_1
+[       OK ] TestGraph/0.test_num_vertices_1 (3 ms)
+[ RUN      ] TestGraph/0.test_num_vertices_2
+[       OK ] TestGraph/0.test_num_vertices_2 (3 ms)
+[ RUN      ] TestGraph/0.test_num_vertices_3
+[       OK ] TestGraph/0.test_num_vertices_3 (41 ms)
+[ RUN      ] TestGraph/0.test_vertices_1
+[       OK ] TestGraph/0.test_vertices_1 (9 ms)
+[ RUN      ] TestGraph/0.test_vertices_2
+[       OK ] TestGraph/0.test_vertices_2 (8 ms)
+[ RUN      ] TestGraph/0.test_edge_1
+[       OK ] TestGraph/0.test_edge_1 (20 ms)
+[ RUN      ] TestGraph/0.test_edge_2
+[       OK ] TestGraph/0.test_edge_2 (5 ms)
+[ RUN      ] TestGraph/0.test_edge_3
+[       OK ] TestGraph/0.test_edge_3 (5 ms)
+[ RUN      ] TestGraph/0.test_edges_1
+[       OK ] TestGraph/0.test_edges_1 (28 ms)
+[ RUN      ] TestGraph/0.test_edges_2
+[       OK ] TestGraph/0.test_edges_2 (13 ms)
+[ RUN      ] TestGraph/0.test_edges_3
+[       OK ] TestGraph/0.test_edges_3 (12 ms)
+[ RUN      ] TestGraph/0.test_add_edges_1
+[       OK ] TestGraph/0.test_add_edges_1 (22 ms)
+[ RUN      ] TestGraph/0.test_add_edges_2
+[       OK ] TestGraph/0.test_add_edges_2 (40 ms)
+[ RUN      ] TestGraph/0.test_add_edges_sequence_1
+[       OK ] TestGraph/0.test_add_edges_sequence_1 (9 ms)
+[ RUN      ] TestGraph/0.test_add_edges_sequence_2
+[       OK ] TestGraph/0.test_add_edges_sequence_2 (9 ms)
+[ RUN      ] TestGraph/0.test_add_edges_failure_1
+[       OK ] TestGraph/0.test_add_edges_failure_1 (4 ms)
+[ RUN      ] TestGraph/0.test_add_edges_failure_2
+[       OK ] TestGraph/0.test_add_edges_failure_2 (3 ms)
+[ RUN      ] TestGraph/0.test_add_edges_failure_3
+[       OK ] TestGraph/0.test_add_edges_failure_3 (3 ms)
+[ RUN      ] TestGraph/0.test_adjacent_vertices_1
+[       OK ] TestGraph/0.test_adjacent_vertices_1 (13 ms)
+[ RUN      ] TestGraph/0.test_adjacent_vertices_2
+[       OK ] TestGraph/0.test_adjacent_vertices_2 (11 ms)
+[ RUN      ] TestGraph/0.test_adjacent_vertices_3
+[       OK ] TestGraph/0.test_adjacent_vertices_3 (7 ms)
+[ RUN      ] TestGraph/0.test_adjacent_vertices_4
+[       OK ] TestGraph/0.test_adjacent_vertices_4 (11 ms)
+[ RUN      ] TestGraph/0.test_adjacent_vertices_5
+[       OK ] TestGraph/0.test_adjacent_vertices_5 (7 ms)
+[ RUN      ] TestGraph/0.test_adjacent_vertices_6
+[       OK ] TestGraph/0.test_adjacent_vertices_6 (8 ms)
+[ RUN      ] TestGraph/0.test_adjacent_vertices_7
+[       OK ] TestGraph/0.test_adjacent_vertices_7 (7 ms)
+[ RUN      ] TestGraph/0.test_adjacent_vertices_8
+[       OK ] TestGraph/0.test_adjacent_vertices_8 (8 ms)
+[ RUN      ] TestGraph/0.test_source
+[       OK ] TestGraph/0.test_source (4 ms)
+[ RUN      ] TestGraph/0.test_target
+[       OK ] TestGraph/0.test_target (3 ms)
+[ RUN      ] TestGraph/0.test_num_edges
+[       OK ] TestGraph/0.test_num_edges (8 ms)
+[----------] 31 tests from TestGraph/0 (377 ms total)
 
-[----------] 5 tests from TestGraph/1, where TypeParam = Graph
-[ RUN      ] TestGraph/1.test_vertex
-[       OK ] TestGraph/1.test_vertex (8 ms)
-[ RUN      ] TestGraph/1.test_edge
-[       OK ] TestGraph/1.test_edge (11 ms)
-[ RUN      ] TestGraph/1.test_vertices
-[       OK ] TestGraph/1.test_vertices (7 ms)
-[ RUN      ] TestGraph/1.test_edges
-[       OK ] TestGraph/1.test_edges (6 ms)
-[ RUN      ] TestGraph/1.test_adjacent_vertices
-[       OK ] TestGraph/1.test_adjacent_vertices (7 ms)
-[----------] 5 tests from TestGraph/1 (39 ms total)
+[----------] 31 tests from TestGraph/1, where TypeParam = Graph
+[ RUN      ] TestGraph/1.test_vertex_1
+[       OK ] TestGraph/1.test_vertex_1 (21 ms)
+[ RUN      ] TestGraph/1.test_vertex_2
+[       OK ] TestGraph/1.test_vertex_2 (4 ms)
+[ RUN      ] TestGraph/1.test_num_vertices_1
+[       OK ] TestGraph/1.test_num_vertices_1 (3 ms)
+[ RUN      ] TestGraph/1.test_num_vertices_2
+[       OK ] TestGraph/1.test_num_vertices_2 (4 ms)
+[ RUN      ] TestGraph/1.test_num_vertices_3
+[       OK ] TestGraph/1.test_num_vertices_3 (29 ms)
+[ RUN      ] TestGraph/1.test_vertices_1
+[       OK ] TestGraph/1.test_vertices_1 (8 ms)
+[ RUN      ] TestGraph/1.test_vertices_2
+[       OK ] TestGraph/1.test_vertices_2 (8 ms)
+[ RUN      ] TestGraph/1.test_edge_1
+[       OK ] TestGraph/1.test_edge_1 (13 ms)
+[ RUN      ] TestGraph/1.test_edge_2
+[       OK ] TestGraph/1.test_edge_2 (6 ms)
+[ RUN      ] TestGraph/1.test_edge_3
+[       OK ] TestGraph/1.test_edge_3 (5 ms)
+[ RUN      ] TestGraph/1.test_edges_1
+[       OK ] TestGraph/1.test_edges_1 (11 ms)
+[ RUN      ] TestGraph/1.test_edges_2
+[       OK ] TestGraph/1.test_edges_2 (11 ms)
+[ RUN      ] TestGraph/1.test_edges_3
+[       OK ] TestGraph/1.test_edges_3 (9 ms)
+[ RUN      ] TestGraph/1.test_add_edges_1
+[       OK ] TestGraph/1.test_add_edges_1 (9 ms)
+[ RUN      ] TestGraph/1.test_add_edges_2
+[       OK ] TestGraph/1.test_add_edges_2 (22 ms)
+[ RUN      ] TestGraph/1.test_add_edges_sequence_1
+[       OK ] TestGraph/1.test_add_edges_sequence_1 (6 ms)
+[ RUN      ] TestGraph/1.test_add_edges_sequence_2
+[       OK ] TestGraph/1.test_add_edges_sequence_2 (7 ms)
+[ RUN      ] TestGraph/1.test_add_edges_failure_1
+[       OK ] TestGraph/1.test_add_edges_failure_1 (3 ms)
+[ RUN      ] TestGraph/1.test_add_edges_failure_2
+[       OK ] TestGraph/1.test_add_edges_failure_2 (3 ms)
+[ RUN      ] TestGraph/1.test_add_edges_failure_3
+[       OK ] TestGraph/1.test_add_edges_failure_3 (3 ms)
+[ RUN      ] TestGraph/1.test_adjacent_vertices_1
+[       OK ] TestGraph/1.test_adjacent_vertices_1 (7 ms)
+[ RUN      ] TestGraph/1.test_adjacent_vertices_2
+[       OK ] TestGraph/1.test_adjacent_vertices_2 (11 ms)
+[ RUN      ] TestGraph/1.test_adjacent_vertices_3
+[       OK ] TestGraph/1.test_adjacent_vertices_3 (6 ms)
+[ RUN      ] TestGraph/1.test_adjacent_vertices_4
+[       OK ] TestGraph/1.test_adjacent_vertices_4 (12 ms)
+[ RUN      ] TestGraph/1.test_adjacent_vertices_5
+[       OK ] TestGraph/1.test_adjacent_vertices_5 (7 ms)
+[ RUN      ] TestGraph/1.test_adjacent_vertices_6
+[       OK ] TestGraph/1.test_adjacent_vertices_6 (6 ms)
+[ RUN      ] TestGraph/1.test_adjacent_vertices_7
+[       OK ] TestGraph/1.test_adjacent_vertices_7 (7 ms)
+[ RUN      ] TestGraph/1.test_adjacent_vertices_8
+[       OK ] TestGraph/1.test_adjacent_vertices_8 (8 ms)
+[ RUN      ] TestGraph/1.test_source
+[       OK ] TestGraph/1.test_source (3 ms)
+[ RUN      ] TestGraph/1.test_target
+[       OK ] TestGraph/1.test_target (3 ms)
+[ RUN      ] TestGraph/1.test_num_edges
+[       OK ] TestGraph/1.test_num_edges (7 ms)
+[----------] 31 tests from TestGraph/1 (265 ms total)
 
 [----------] Global test environment tear-down
-[==========] 10 tests from 2 test cases ran. (264 ms total)
-[  PASSED  ] 10 tests.
-==6162==
-==6162== HEAP SUMMARY:
-==6162==     in use at exit: 26,123 bytes in 188 blocks
-==6162==   total heap usage: 535 allocs, 347 frees, 463,496 bytes allocated
-==6162==
-==6162== LEAK SUMMARY:
-==6162==    definitely lost: 0 bytes in 0 blocks
-==6162==    indirectly lost: 0 bytes in 0 blocks
-==6162==      possibly lost: 2,064 bytes in 1 blocks
-==6162==    still reachable: 0 bytes in 0 blocks
-==6162==         suppressed: 24,059 bytes in 187 blocks
-==6162== Rerun with --leak-check=full to see details of leaked memory
-==6162==
-==6162== For counts of detected and suppressed errors, rerun with: -v
-==6162== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+[==========] 62 tests from 2 test cases ran. (679 ms total)
+[  PASSED  ] 62 tests.
+==4166== 
+==4166== HEAP SUMMARY:
+==4166==     in use at exit: 72,704 bytes in 1 blocks
+==4166==   total heap usage: 1,747 allocs, 1,746 frees, 322,399 bytes allocated
+==4166== 
+==4166== LEAK SUMMARY:
+==4166==    definitely lost: 0 bytes in 0 blocks
+==4166==    indirectly lost: 0 bytes in 0 blocks
+==4166==      possibly lost: 0 bytes in 0 blocks
+==4166==    still reachable: 72,704 bytes in 1 blocks
+==4166==         suppressed: 0 bytes in 0 blocks
+==4166== Rerun with --leak-check=full to see details of leaked memory
+==4166== 
+==4166== For counts of detected and suppressed errors, rerun with: -v
+==4166== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+File 'Graph.h'
+Lines executed:98.77% of 81
+Branches executed:91.67% of 48
+Taken at least once:72.92% of 48
+Calls executed:94.81% of 77
+Creating 'Graph.h.gcov'

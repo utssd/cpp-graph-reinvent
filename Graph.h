@@ -132,11 +132,14 @@ public:
   // TODO check Boost result of add_edge failure, see what return.first is
   friend std::pair<edge_descriptor, bool>
   add_edge(vertex_descriptor s, vertex_descriptor e, Graph &t) {
-    if (t.g[s].size() &&
+    if (s == e) {
+        return std::make_pair(std::make_pair(s, e), false);}
+      if (t.g[s].size() &&
         (std::find(t.g[s].begin(), t.g[s].end(), e) != t.g[s].end())) {
       return std::make_pair(std::make_pair(s, e), false);
     }
     t.g[s].push_back(e);
+    std::sort(t.g[s].begin(), t.g[s].end());
     return std::make_pair(std::make_pair(s, e), true);
   }
 
